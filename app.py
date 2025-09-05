@@ -26,12 +26,12 @@ if st.button("🔮 Predict Customer Cluster", type="primary"):
     input_data = np.array([[age, annual_income, spending_score]])
     input_scaled = scaler.transform(input_data)
     input_pca = pca.transform(input_data)
-    input_with_genre = np.array([[genre_encoded, age, annual_income, spending_score]])
+    input_with_genre = np.array([[genre_encoded, age, annual_income, spending_score]])  
     
     st.subheader("📊 Model Predictions")
     cols = st.columns(2)
     for idx, (name, model) in enumerate(models.items()):
-            cluster = model.predict(input_with_genre)[0]
-            with cols[idx % 2]:
-                st.success(f"**{name}:** Cluster {cluster}")
+        cluster = model.predict(input_with_genre)[0]
+        with cols[idx % 2]:
+            st.success(f"**{name}:** Cluster {cluster}")
     
